@@ -3,7 +3,17 @@
 #
 
 # Add source to this project's executable.
-add_executable (Assignment2 "Assignment2.cpp" "Assignment2.h")
+add_executable (Assignment2 "AbstractPatientDatabaseLoader.h"
+    "GPNotificationSystemFacade.cpp" "GPNotificationSystemFacade.h"
+    "HospitalAlertSystemFacade.cpp" "HospitalAlertSystemFacade.cpp"
+    "main.cpp"
+    "Patient.cpp" "Patient.h"
+    "PatientAlertLevels.h"
+    "PatientDatabaseLoader.cpp" "PatientDatabaseLoader.h"
+    "PatientFileLoader.cpp" "PatientFileLoader.h"
+    "PatientManagementSystem.cpp" "PatientManagementSystem.h"
+    "Person.cpp" "Person.h"
+    "Vitals.cpp" "Vitals.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Assignment2 PROPERTY CXX_STANDARD 20)
