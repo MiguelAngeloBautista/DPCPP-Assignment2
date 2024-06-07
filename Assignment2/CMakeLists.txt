@@ -13,7 +13,7 @@ add_executable (Assignment2 "AbstractPatientDatabaseLoader.h"
     "PatientFileLoader.cpp" "PatientFileLoader.h"
     "PatientManagementSystem.cpp" "PatientManagementSystem.h"
     "Person.cpp" "Person.h"
-    "Vitals.cpp" "Vitals.h")
+    "Vitals.cpp" "Vitals.h" "AlertStrategies/AmongusSusStrategy.h" "AlertStrategies/ERushStrategy.h" "AlertStrategies/AbstractAlertLevelStrategy.h" "AlertStrategies/AmongusSusStrategy.cpp" "AlertStrategies/DamageStrategy.cpp" "AlertStrategies/ERushStrategy.cpp" "AlertStrategies/NocapSyndromeStrategy.cpp" "AlertStrategies/TicctoccBrainStrategy.cpp" "AlertStrategies/AlertLevelStrategyComposite.cpp" "VitalsObserver.h" "VitalsObserver.cpp" )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Assignment2 PROPERTY CXX_STANDARD 20)

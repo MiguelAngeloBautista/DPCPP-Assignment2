@@ -1,15 +1,18 @@
 #ifndef ALERT_LEVEL_STRATEGY_COMPOSITE_H
 #define ALERT_LEVEL_STRATEGY_COMPOSITE_H
 
-#include "AbstractAlertLevelStrategy.h"
 #include <vector>
+#include "AbstractAlertLevelStrategy.h"
+#include "../Patient.h"
 
 class AlertLevelStrategyComposite : public AbstractAlertLevelStrategy {
 public:
-	void addStrategy(AbstractAlertLevelStrategy& strategy);
-	AlertLevel calculateAlertLevel(Vitals& vitals, int age) override;
+	AlertLevelStrategyComposite();
+	~AlertLevelStrategyComposite() = default;
+	void addStrategy(std::unique_ptr<AbstractAlertLevelStrategy> strategy);
+	AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
 private:
-	std::vector<AbstractAlertLevelStrategy*> strategies;
+	std::vector<std::unique_ptr<AbstractAlertLevelStrategy>> _strategies;
 };
 
 #endif // ALERT_LEVEL_STRATEGY_COMPOSITE

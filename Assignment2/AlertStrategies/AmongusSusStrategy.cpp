@@ -1,6 +1,6 @@
 #include "AmongusSusStrategy.h"
 
-AlertLevel AmongSusStrategy::calculateAlertLevel(Vitals& vitals)
+AlertLevel AmongusSusStrategy::calculateAlertLevel(Vitals& vitals, Patient* patient)
 {
     if (vitals.HR() > 220) {
         return AlertLevel::Red;

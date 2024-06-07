@@ -3,9 +3,11 @@
 
 #include "AbstractAlertLevelStrategy.h"
 
-class AmongSusStrategy : public AbstractAlertLevelStrategy {
+class AmongusSusStrategy : public AbstractAlertLevelStrategy {
 public:
-    AlertLevel calculateAlertLevel(Vitals& vitals);
+    AmongusSusStrategy() = default;
+    ~AmongusSusStrategy() = default;
+    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
 };
 
 #endif // AMONG_SUS_STRATEGY_H

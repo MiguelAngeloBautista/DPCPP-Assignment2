@@ -1,8 +1,8 @@
 #include "TicctoccBrainStrategy.h"
 
-AlertLevel TicctoccBrainStrategy::calculateAlertLevel(Vitals& vitals, int age)
+AlertLevel TicctoccBrainStrategy::calculateAlertLevel(Vitals& vitals, Patient* patient)
 {
-    if (age < 35 && vitals.BA() < 10) {
+    if (patient->age() < 35 && vitals.BA() < 10) {
         return AlertLevel::Red;
     }
 

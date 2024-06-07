@@ -7,7 +7,9 @@
 
 class TicctoccBrainStrategy : public AbstractAlertLevelStrategy {
 public:
-    AlertLevel calculateAlertLevel(Vitals& vitals, int age);
+    TicctoccBrainStrategy() = default;
+    ~TicctoccBrainStrategy() = default;
+    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
 };
 
 #endif // TICCTOCC_BRAIN_STRATEGY_H

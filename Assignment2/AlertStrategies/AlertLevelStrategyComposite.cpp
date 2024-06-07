@@ -1,17 +1,25 @@
 #include "AlertLevelStrategyComposite.h"
 
-void AlertLevelStrategyComposite::addStrategy(AbstractAlertLevelStrategy& strategy) {
+AlertLevelStrategyComposite::AlertLevelStrategyComposite() {
 
 }
 
-AlertLevel AlertLevelStrategyComposite::calculateAlertLevel(Vitals& vitals, int age) {
-	for (AbstractAlertLevelStrategy* strategy : strategies)
+void AlertLevelStrategyComposite::addStrategy(std::unique_ptr<AbstractAlertLevelStrategy> strategy) {
+	_strategies.push_back(std::move(strategy));
+}
+
+AlertLevel AlertLevelStrategyComposite::calculateAlertLevel(Vitals& vitals, Patient* patient) {
+	AlertLevel newAlertLevel = AlertLevel::Green;
+
+	for (const auto& strategy : _strategies)
 	{
-		if (typeid(strategy).name() == "TicctoccBrainStrategy" or typeid(strategy).name() == "DamageStrategy") {
-			return strategy->calculateAlertLevel(vitals, age);
+		
+		if (strategy->calculateAlertLevel(vitals, patient) >= newAlertLevel) {
+			newAlertLevel = strategy->calculateAlertLevel(vitals, patient);
 		}
-		else {
-			return strategy->calculateAlertLevel(vitals);
-		}
+		
 	}
+
+
+	return newAlertLevel;
 }

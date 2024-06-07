@@ -1,6 +1,6 @@
 #include "NocapSyndromeStrategy.h"
 
-AlertLevel NocapSyndromeStrategy::calculateAlertLevel(Vitals& vitals)
+AlertLevel NocapSyndromeStrategy::calculateAlertLevel(Vitals& vitals, Patient* patient)
 {
     if (vitals.SPO2() < 90) {
         return AlertLevel::Red;

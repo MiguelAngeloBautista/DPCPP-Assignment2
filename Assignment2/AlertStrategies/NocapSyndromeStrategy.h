@@ -5,7 +5,9 @@
 
 class NocapSyndromeStrategy : public AbstractAlertLevelStrategy {
 public:
-    AlertLevel calculateAlertLevel(Vitals& vitals);
+    NocapSyndromeStrategy() = default;
+    ~NocapSyndromeStrategy() = default;
+    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
 };
 
 #endif // NOCAP_SYNDROME_STRATEGY_H
