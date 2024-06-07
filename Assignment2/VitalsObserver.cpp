@@ -13,28 +13,23 @@ void VitalsObserver::update(Patient* patient, Vitals* v) {
 		std::string disease = patient->diagnoses().at(i);
 
 		if (disease == "NocapSyndrome") {
-			std::cout << "NocapSyndrome" << std::endl;
 			_alertLevelStrategy->addStrategy(std::make_unique<NocapSyndromeStrategy>());
 		}
 		else if (disease == "TicctoccBrainDamage") {
-			std::cout << "TiccToccBrain" << std::endl;
 			_alertLevelStrategy->addStrategy(std::make_unique<TicctoccBrainStrategy>());
 		}
 		else if (disease == "Damage") {
-			std::cout << "Damage" << std::endl;
 			_alertLevelStrategy->addStrategy(std::make_unique<DamageStrategy>());
 		}
 		else if (disease == "ERush") {
-			std::cout << "ERush" << std::endl;
 			_alertLevelStrategy->addStrategy(std::make_unique<ERushStrategy>());
 		}
 		else if (disease == "AmongusSus") {
-			std::cout << "AmongusSus" << std::endl;
 			_alertLevelStrategy->addStrategy(std::make_unique<AmongusSusStrategy>());
 		}
 	}
 
-	AlertLevel newAlertLevel = _alertLevelStrategy->calculateAlertLevel(*v, patient);
+	AlertLevel newAlertLevel = _alertLevelStrategy->calculateAlertLevel(*v, patient->age());
 
 	//Set the new alert level
 	patient->setAlertLevel(newAlertLevel);

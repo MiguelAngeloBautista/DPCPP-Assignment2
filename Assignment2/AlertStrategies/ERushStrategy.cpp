@@ -1,6 +1,6 @@
 #include "ERushStrategy.h"
 
-AlertLevel ERushStrategy::calculateAlertLevel(Vitals& vitals, Patient* patient)
+AlertLevel ERushStrategy::calculateAlertLevel(Vitals& vitals)
 {
     if (vitals.BT() > 38) {
         if (vitals.BA() > 110) {

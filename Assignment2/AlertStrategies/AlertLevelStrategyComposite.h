@@ -10,7 +10,8 @@ public:
 	AlertLevelStrategyComposite();
 	~AlertLevelStrategyComposite() = default;
 	void addStrategy(std::unique_ptr<AbstractAlertLevelStrategy> strategy);
-	AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
+	AlertLevel calculateAlertLevel(Vitals& vitals) override;
+	AlertLevel calculateAlertLevel(Vitals& vitals, int age) override;
 private:
 	std::vector<std::unique_ptr<AbstractAlertLevelStrategy>> _strategies;
 };

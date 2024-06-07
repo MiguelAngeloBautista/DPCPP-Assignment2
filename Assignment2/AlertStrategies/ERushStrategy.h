@@ -7,7 +7,7 @@ class ERushStrategy : public AbstractAlertLevelStrategy {
 public:
     ERushStrategy() = default;
     ~ERushStrategy() = default;
-    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
+    AlertLevel calculateAlertLevel(Vitals& vitals) override;
 };
 
 #endif // E_RUSH_STRATEGY_H

@@ -7,7 +7,8 @@ class DamageStrategy : public AbstractAlertLevelStrategy {
 public:
     DamageStrategy() = default;
     ~DamageStrategy() = default;
-    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
+    AlertLevel calculateAlertLevel(Vitals& vitals) override;
+    AlertLevel calculateAlertLevel(Vitals& vitals, int age) override;
 };
 
 #endif // DAMAGE_STRATEGY_H

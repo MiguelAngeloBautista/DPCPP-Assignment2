@@ -7,7 +7,7 @@ class AmongusSusStrategy : public AbstractAlertLevelStrategy {
 public:
     AmongusSusStrategy() = default;
     ~AmongusSusStrategy() = default;
-    AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) override;
+    AlertLevel calculateAlertLevel(Vitals& vitals) override;
 };
 
 #endif // AMONG_SUS_STRATEGY_H

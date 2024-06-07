@@ -9,7 +9,8 @@ class AbstractAlertLevelStrategy {
 public:
     AbstractAlertLevelStrategy() = default;
     virtual ~AbstractAlertLevelStrategy() = default;
-    virtual AlertLevel calculateAlertLevel(Vitals& vitals, Patient* patient) = 0;
+    virtual AlertLevel calculateAlertLevel(Vitals& vitals) = 0;
+    virtual AlertLevel calculateAlertLevel(Vitals& vitals, int age) { return calculateAlertLevel(vitals); };
 };
 
 #endif //ABSTRACT_ALERT_LEVEL_STRATEGY
