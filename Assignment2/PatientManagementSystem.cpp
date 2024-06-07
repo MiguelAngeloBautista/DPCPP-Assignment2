@@ -11,6 +11,8 @@
 #include "GPNotificationSystemFacade.h"
 #include "HospitalAlertSystemFacade.h"
 
+#include "VitalsObserver.h"
+
 using namespace std;
 
 
@@ -20,6 +22,9 @@ PatientManagementSystem::PatientManagementSystem() :
     _gpNotificationSystem(std::make_unique<GPNotificationSystemFacade>())
 {
     _patientDatabaseLoader->initialiseConnection();
+
+    _vitalsObserver = std::make_unique<VitalsObserver>();
+
 }
 
 PatientManagementSystem::~PatientManagementSystem()
@@ -91,7 +96,7 @@ void PatientManagementSystem::addVitalsRecord()
         int bodyTemperature;
         int brainActivity;
 
-        cout << "Enter hear rate: ";
+        cout << "Enter heart rate: ";
         cin >> heartRate;
         cout << "Enter oxygen saturation: ";
         cin >> oxygenSaturation;
@@ -102,6 +107,9 @@ void PatientManagementSystem::addVitalsRecord()
 
         Vitals* v = new Vitals(heartRate, oxygenSaturation, bodyTemperature, brainActivity);
         _patientLookup[pid]->addVitals(v);
+        // TODO: call observer to calculate new alert level also pass patient age
+
+        _vitalsObserver->update(_patientLookup[pid], v);
     }
     else {
         cout << "Patient not found" << endl;

@@ -12,6 +12,7 @@ class AbstractPatientDatabaseLoader;
 class HospitalAlertSystemFacade;
 class GPNotificationSystemFacade;
 class Patient;
+class VitalsObserver;
 
 
 class PatientManagementSystem
@@ -40,6 +41,8 @@ protected:
     std::unique_ptr<GPNotificationSystemFacade> _gpNotificationSystem;
 
     std::unique_ptr<AbstractPatientDatabaseLoader> _patientDatabaseLoader;
+
+    std::unique_ptr<VitalsObserver> _vitalsObserver;
 
 };
 
