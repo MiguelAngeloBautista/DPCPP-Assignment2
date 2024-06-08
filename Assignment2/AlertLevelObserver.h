@@ -9,6 +9,7 @@ class AlertLevelObserver {
 public:
 	AlertLevelObserver();
 	~AlertLevelObserver() = default;
+	// Notify the hospital alert system and GP notification system
 	void notify(Patient* p);
 private:
 	std::unique_ptr<HospitalAlertSystemFacade> _hospitalAlertSystemFacade;

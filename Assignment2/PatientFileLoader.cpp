@@ -30,30 +30,36 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
 			std::string diagnosis;
 			std::string vitals;
 
+			// Separates each portion of the line
 			std::getline(ssLine, id, '/');
 			std::getline(ssLine, dob, '/');
 			std::getline(ssLine, name, '/');
 			std::getline(ssLine, diagnosis, '/');
 			std::getline(ssLine, vitals);
 
+			// Parse the Date
 			std::tm t{ };
 			std::istringstream ssDob(dob);
 			ssDob >> std::get_time(&t, "%d-%m-%Y");
 
+			// Parse the name
 			std::istringstream ssName(name);
 			std::string firstName;
 			std::string lastName;
 			std::getline(ssName, lastName, ',');
 			std::getline(ssName, firstName);
 
+			// Creates a new patient with the parsed firstName and lastName
 			Patient* p = new Patient(firstName, lastName, t);
 
+			// Parses the diagnosis and adds it to the patient
 			std::istringstream ssDiag(diagnosis);
 			std::string diag;
 			while (std::getline(ssDiag, diag, ',')) {
 				p->addDiagnosis(diag);
 			}
 
+			// Parses the vitals and adds it to the patient
 			std::istringstream ssVits(vitals);
 			std::string vit;
 			while (std::getline(ssVits, vit, ';')) {

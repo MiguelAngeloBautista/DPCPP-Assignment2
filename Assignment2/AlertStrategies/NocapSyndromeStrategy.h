@@ -7,6 +7,7 @@ class NocapSyndromeStrategy : public AbstractAlertLevelStrategy {
 public:
     NocapSyndromeStrategy() = default;
     ~NocapSyndromeStrategy() = default;
+    // Inherited via AbstractAlertLevelStrategy. Calculate the alert level based on the vitals.
     AlertLevel calculateAlertLevel(Vitals& vitals) override;
 };
 

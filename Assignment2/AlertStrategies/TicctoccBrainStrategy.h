@@ -9,7 +9,9 @@ class TicctoccBrainStrategy : public AbstractAlertLevelStrategy {
 public:
     TicctoccBrainStrategy() = default;
     ~TicctoccBrainStrategy() = default;
+    // Inherited via AbstractAlertLevelStrategy. Empty implementation.
     AlertLevel calculateAlertLevel(Vitals& vitals) override;
+    // Inherited via AbstractAlertLevelStrategy. Main Implementation of TicctoccBrainStrategy. Calculate the alert level based on the vitals and patient's age.
     AlertLevel calculateAlertLevel(Vitals& vitals, int age) override;
 };
 
