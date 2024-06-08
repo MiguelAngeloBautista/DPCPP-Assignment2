@@ -1,12 +1,12 @@
 #include "VitalsObserver.h"
 
 VitalsObserver::VitalsObserver() {
-
+	_alertLevelObserver = std::make_unique<AlertLevelObserver>();
 }
 
 void VitalsObserver::update(Patient* patient, Vitals* v) {
 	//Create a new alert level strategy for this update instance
-	_alertLevelStrategy = std::make_unique<AlertLevelStrategyComposite>();
+	std::unique_ptr<AlertLevelStrategyComposite> _alertLevelStrategy = std::make_unique<AlertLevelStrategyComposite>();
 
 	// Check the diagnoses of the patient and add the appropriate strategy to the composite
 	for (int i = 0; i < patient->diagnoses().size(); i++) {
@@ -33,4 +33,8 @@ void VitalsObserver::update(Patient* patient, Vitals* v) {
 
 	//Set the new alert level
 	patient->setAlertLevel(newAlertLevel);
+
+	if (newAlertLevel == AlertLevel::Red) {
+		_alertLevelObserver->notify(patient);
+	}
 }

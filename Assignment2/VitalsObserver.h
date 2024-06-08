@@ -9,7 +9,7 @@
 #include "AlertStrategies/TicctoccBrainStrategy.h"
 #include "AlertStrategies/DamageStrategy.h"
 #include "AlertStrategies/ERushStrategy.h"
-
+#include "AlertLevelObserver.h"
 
 class VitalsObserver {
 public:
@@ -19,7 +19,7 @@ public:
 	// Update the observer and check the alert level of the patient. Then sets the alert level of the patient
 	void update(Patient*, Vitals*);
 private:
-	std::unique_ptr<AlertLevelStrategyComposite> _alertLevelStrategy;
+	std::unique_ptr<AlertLevelObserver> _alertLevelObserver;
 };
 
 #endif // VITALS_OBSERVER_H
